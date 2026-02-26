@@ -34,10 +34,9 @@ class EmailServiceTest {
         String body = "Some message body";
 
         emailService.sendEmail(email, subject, body);
-        emailService.sendEmail(email, subject, body);
 
         List<Message> messages = client.getAllMessages();
-        assertEquals(2, messages.size());
+        assertEquals(1, messages.size());
         assertAll("Checking the email properties",
                 () -> assertEquals(subject, messages.getFirst().subject()),
                 () -> assertEquals(body, messages.getFirst().snippet()),

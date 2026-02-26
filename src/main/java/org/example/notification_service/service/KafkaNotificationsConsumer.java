@@ -15,7 +15,7 @@ public class KafkaNotificationsConsumer {
         this.emailService = emailService;
     }
 
-    @KafkaListener(groupId = "testGroup", topics = "emailNotifications")
+    @KafkaListener(groupId = "testGroup", topics = "${app.kafka.topics.my-topic}")
     public void listenToTopic(String[] receivedData) {
         emailService.sendEmail(receivedData[0], "Your account status", receivedData[1]);
         System.out.println("Received message: " + Arrays.toString(receivedData));
